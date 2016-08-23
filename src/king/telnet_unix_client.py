@@ -9,7 +9,7 @@
 import telnetlib
 
 def telnetdo(HOST,PORT,user,password,finish,command):
-    tn=telnetlib.Telnet(HOST,PORT,timeout=10)#telnet 默认是23端口，telnet时必须打开,此处改为8020
+    tn=telnetlib.Telnet(HOST,PORT,timeout=10)#telnet 默认是23端口，telnet时必须打开,服务端已改为8020
     tn.set_debuglevel(2)# 设置debug级别
     
     #输入登录用户名 
@@ -39,5 +39,4 @@ if __name__ =='__main__':
     password = 'Yy@19811008' #登陆密码
     finish = '[jinzj@localhost ~]$'      # 命令提示符（标识着上一条命令已执行完毕） 
     command = ['pwd','ls']
-
-telnetdo(HOST,PORT,user,password,finish,command)
+    telnetdo(HOST,PORT,user,password,finish,command)
