@@ -26,13 +26,13 @@ def server_connect():
         username = server[i][3]
         password = server[i][4]
         
-        ssh = paramiko.SSHClient()
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname,port,username,password)
+        ssh = paramiko.SSHClient()#实例化SSH
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())#第一次连接远程服务器，做一个签名，在SSH下生成key
+        ssh.connect(hostname,port,username,password)#机器、端口号、用户名、密码
        
         if processname != 'tomcat':  
-            stdin, stdout, stderr = ssh.exec_command('service %s status'%processname) 
-            result = stdout.readlines()
+            stdin, stdout,stderr = ssh.exec_command('service %s status'%processname) #输入命令
+            result = stdout.readlines() #读取命令返回后的结果
             a = '%s %s'%(processname,result)
             if 'running' in a:
                 a = '%s running'%processname

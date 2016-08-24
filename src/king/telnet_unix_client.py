@@ -2,6 +2,7 @@
 #encoding:utf-8
 
 '''
+使用Python实现Telnet远程登录
 模拟telnet客户端的操作
 通过CMD执行一段命令，自动执行unix服务器上的命令，并将结果返回
 在cmd中可以通过运行python脚本就可以执行
