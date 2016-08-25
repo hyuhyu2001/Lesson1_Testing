@@ -10,12 +10,12 @@
 import SocketServer
 import os
 import time
-
+    
 class MyServer(SocketServer.BaseRequestHandler):
 
     def handle(self):
         conn = self.request
-        conn.send('Hello, baby %s'%(newline*2))  #给某个客户端发消息，conn是某个客户端 
+        conn.send('Hello, baby %s'%newline)  #给某个客户端发消息，conn是某个客户端 
         for i in range(len(l)):
             a = l[i]
             conn.send( 'enter your %s:'%a)     
@@ -36,7 +36,7 @@ class MyServer(SocketServer.BaseRequestHandler):
                         break
                 else:
                     data_total = []
-                    conn.send('Wrong'+newline+'enter your %s:'%a)
+                    conn.sendall('Wrong'+newline+'enter your %s:'%a)
                     continue
             continue
         
@@ -53,5 +53,5 @@ if __name__ == '__main__':
     l = ['username','password','command']
     k = ['jichenglong','123','ls']
     newline = os.linesep
-    server = SocketServer.ThreadingTCPServer(('127.0.0.1',126),MyServer)
+    server = SocketServer.ThreadingTCPServer(('192.168.7.82',8020),MyServer)
     server.serve_forever()
