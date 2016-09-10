@@ -53,5 +53,5 @@ if __name__ == '__main__':
     l = ['username','password','command']
     k = ['jichenglong','123','ls']
     newline = os.linesep
-    server = SocketServer.ThreadingTCPServer(('192.168.7.82',8020),MyServer)
+    server = SocketServer.ThreadingTCPServer(('127.0.0.1',126),MyServer)
     server.serve_forever()

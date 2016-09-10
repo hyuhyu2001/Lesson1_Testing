@@ -77,7 +77,7 @@ class MyServer(SocketServer.BaseRequestHandler):
         
 def getinfo(processname):
     task = os.popen('sh /usr/local/tomcat_h5_test/bin/startup.sh')  
-    if 'success' in task.read():
+    if 'success' in task.readlines():
         status = 'perfect'   
     else:
         status = 'so bad'
