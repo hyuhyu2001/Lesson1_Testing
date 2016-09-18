@@ -19,40 +19,18 @@ import os
 import socket
 from SignIn import *
 from CmdList import *
+from telnet_public import *
 
-def Client_Connected():
-    name = 'Hello, baby' +newline
-    send_result(conn,name)    
-    
-def parse_input(conn,newline):
-    data_total= []
-    while True:
-        data = conn.recv(1024)
-        if data != newline:
-            data_total.append(data)
-            continue
-        else:
-            break
-    data = ''.join(data_total)
-    return data
-
-def send_result(conn,name):
-        conn.sendall(name)
-        
-def quit_status(conn):
-    name = 'goodbye baby'
-    send_result(conn,name)    
-    conn.close()
-        
 def status_manger(status):
     if status == 'Connected':
-        Client_Connected()
+        Client_Connected(conn,newline)
     elif status == 'username':
-        get_username_status(conn,newline)   
+        get_username_status(status,conn,newline)   
     elif status == 'password':
-        get_password_status(conn,newline)   
+        get_password_status(status,conn,newline)   
     elif status == 'cmd':
-        get_cmd_status(conn,newline)   
+        get_cmd_status(status,conn,newline)   
+
 
 def main(conn):
     status_manger('Connected')
@@ -60,6 +38,7 @@ def main(conn):
     status_manger('password')
     status_manger('cmd')
 
+   
 if __name__ == '__main__':
     newline = os.linesep
     host ='127.0.0.1'  #'192.168.7.82'
