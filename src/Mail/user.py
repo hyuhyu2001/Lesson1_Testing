@@ -3,11 +3,11 @@
 import xlsxwriter
 import mysql.connector
 
-config = {'host': 'wappdb008.mysql.rds.aliyuncs.com',  # 默认127.0.0.1
-          'user': 'llb_db',
-          'password': 'lLb_PwDa',
+config = {'host': '**',  # 默认127.0.0.1
+          'user': '**',
+          'password': '**',
           'port': 3306,  # 默认即为3306
-          'database': 'llb_db_official',
+          'database': '**',
           'charset': 'utf8'  # 默认即为utf8
           }
 
